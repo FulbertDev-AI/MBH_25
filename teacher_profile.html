@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Profile Enseignant</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+
+      <a href="home.html" class="logo">Nunya</a>
+
+      <form action="search.html" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="rechercher les cours..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img src="images/pic-1.jpg" class="image" alt="">
+         <h3 class="name">Abalo Kossi</h3>
+         <p class="role">Etudiant</p>
+         <a href="profile.html" class="btn">voir profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">Connexion</a>
+            <a href="register.html" class="option-btn">Inscription</a>
+         </div>
+      </div>
+
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="images/pic-1.jpg" class="image" alt="">
+      <h3 class="name">Abalo Kossi</h3>
+      <p class="role">Etudiant</p>
+      <a href="profile.html" class="btn">voir profile</a>
+   </div>
+
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>Accueil</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>A Propos</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Cours</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Enseignants</span></a>
+      <a href="contact.html"><i class="fas fa-headset"></i><span>Contactez-nous</span></a>
+   </nav>
+
+</div>
+
+<section class="teacher-profile">
+
+   <h1 class="heading">profile details</h1>
+
+   <div class="details">
+      <div class="tutor">
+         <img src="images/pic-2.jpg" alt="">
+         <h3>Maxime K.</h3>
+         <span>Dévoppeur Fullstack</span>
+      </div>
+      <div class="flex">
+         <p>Total playlists : <span>4</span></p>
+         <p>Total vidéos : <span>18</span></p>
+         <p>Total likes : <span>1208</span></p>
+         <p>Total commentaires : <span>52</span></p>
+      </div>
+   </div>
+
+</section>
+
+<section class="courses">
+
+   <h1 class="heading">Nos cours</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/thumb-1.png" alt="">
+            <span>10 vidéos</span>
+         </div>
+         <h3 class="title">Tutoriel complet de HTML</h3>
+         <a href="playlist.html" class="inline-btn">voir playlist</a>
+      </div>
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/thumb-2.png" alt="">
+            <span>10 vidéos</span>
+         </div>
+         <h3 class="title">Tutoriel complet de CSS</h3>
+         <a href="playlist.html" class="inline-btn">voir playlist</a>
+      </div>
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/thumb-3.png" alt="">
+            <span>10 vidéos</span>
+         </div>
+         <h3 class="title">Cours complet JavaScript</h3>
+         <a href="playlist.html" class="inline-btn">voir playlist</a>
+      </div>
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/thumb-4.png" alt="">
+            <span>10 vidéos</span>
+         </div>
+         <h3 class="title">cours complet Boostrap</h3>
+         <a href="playlist.html" class="inline-btn">voir playlist</a>
+      </div>
+
+   </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+
+   &copy; copyright @ 2025 by <span>Code Reapers | MBH 25</span> | Tous droits reservés
+
+</footer>
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+   
+</body>
+</html>
