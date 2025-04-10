@@ -1,0 +1,108 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.chat-header {
+  padding: 20px;
+  background-color: #8e44ad;
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+
+.mentor-name {
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  
+}
+
+
+.chat-header img{
+  width: 50px;
+  height: 50px;
+  border: 2px solid none;
+  border-radius: 50%;
+  margin-top: -12px;
+}
+
+.mentor-status {
+  font-size: 0.9rem;
+  color: #d1e7ff;
+}
+
+.chat-box {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 15px;
+  max-width: 75%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-size: 0.95rem;
+}
+
+.received {
+  background-color: #e9ecef;
+  align-self: flex-start;
+  border-top-left-radius: 0;
+}
+
+.sent {
+  background-color: #d1e7dd;
+  align-self: flex-end;
+  border-top-right-radius: 0;
+  margin-left: 200px;
+}
+
+.chat-input {
+  padding: 15px 20px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+}
+
+.chat-input button {
+  background-color: #8e44ad;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.chat-input button:hover {
+  background-color: #5d33bc;
+}
