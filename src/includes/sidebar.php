@@ -14,7 +14,7 @@
     <nav class="navbar">
         <a href="../views/home.php"><i class="fas fa-home"></i><span>Accueil</span></a>
         <a href="../views/about.html"><i class="fas fa-question"></i><span>A Propos</span></a>
-        <a href="../views/courses.html"><i class="fas fa-graduation-cap"></i><span>Cours</span></a>
+        <a href="../views/courses.php"><i class="fas fa-graduation-cap"></i><span>Cours</span></a>
         <a href="../views/teachers.html"><i class="fas fa-chalkboard-user"></i><span>Enseignants</span></a>
         <a href="../views/contact.html"><i class="fas fa-headset"></i><span>Contactez-nous</span></a>
     </nav>
