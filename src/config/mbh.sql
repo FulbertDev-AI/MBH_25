@@ -174,3 +174,51 @@ CREATE TABLE progress
 
 -- Insertion de quelques données dans les tables
 
+-- Insertion de quelques utilisateurs supplémentaires
+INSERT INTO utilisateurs (nom, email, pass, photo) VALUES
+('Ditorga NANGA', 'ditorga.nanga@gmail.com', '$2y$10$toh9cT82ZiQUYUZDwKkqhe7ffIJmWMy2q55PCn/dr.sbRDfZnbe/.', 'default.png'),
+('Ali BARRY', 'ali.barry@gmail.com', '$2y$10$toh9cT82ZiQUYUZDwKkqhe7ffIJmWMy2q55PCn/dr.sbRDfZnbe/.', 'default.png'),
+('Darryl-win LOGOSSOU', 'darryl.logossou@gmail.com', '$2y$10$toh9cT82ZiQUYUZDwKkqhe7ffIJmWMy2q55PCn/dr.sbRDfZnbe/.', 'default.png');
+
+-- Insertion des profils
+INSERT INTO profiles (user_id, full_name, bio, interests, skills, education, experience, location) VALUES
+(1, 'Toï Ewaza TCHAMOUZA', 'Développeur Full Stack passionné', 'Développement web, IA', 'PHP, JavaScript, Python', 'Master en Informatique', '3 ans d''expérience en développement', 'Lomé, Togo'),
+(2, 'Ditorga NANGA', 'Expert en cybersécurité', 'Sécurité informatique, Réseaux', 'Cybersécurité, Administration système', 'License en Sécurité informatique', '2 ans en tant qu''analyste sécurité', 'Lomé, Togo'),
+(3, 'Ali BARRY', 'Mentor en développement personnel', 'Coaching, Leadership', 'Communication, Management', 'Master en Management', '5 ans d''expérience en coaching', 'Kara, Togo'),
+(4, 'Darryl-win LOGOSSOU', 'Designer UX/UI', 'Design d''interface, Expérience utilisateur', 'Figma, Adobe XD', 'Formation en Design numérique', '2 ans en design d''interface', 'Lomé, Togo');
+
+-- Insertion des cours
+INSERT INTO courses (title, description, category, level, duration, instructor_id, status) VALUES
+('Introduction au Développement Web', 'Fondamentaux du développement web', 'Développement', 'beginner', 30, 1, 'published'),
+('Cybersécurité pour Débutants', 'Bases de la sécurité informatique', 'Sécurité', 'beginner', 20, 2, 'published'),
+('Leadership et Management', 'Développer ses compétences en leadership', 'Soft Skills', 'intermediate', 25, 3, 'published'),
+('UX Design Avancé', 'Conception d''interfaces utilisateur', 'Design', 'advanced', 40, 4, 'published');
+
+-- Insertion des évaluations
+INSERT INTO assessments (title, type, questions, duration) VALUES
+('Test d''Orientation Professionnelle', 'personality', '{"q1": "Quel est votre domaine préféré ?", "q2": "Quels sont vos points forts ?"}', 30),
+('Évaluation Technique Web', 'skills', '{"q1": "Qu''est-ce que HTML ?", "q2": "Expliquez CSS"}', 45),
+('Test d''Intérêts Professionnels', 'interests', '{"q1": "Quel secteur vous attire ?", "q2": "Environnement de travail idéal ?"}', 25);
+
+-- Insertion des certificats
+INSERT INTO certificates (user_id, course_id, certificate_number, status) VALUES
+(2, 1, 'CERT-2025-001', 'issued'),
+(3, 2, 'CERT-2025-002', 'issued'),
+(4, 3, 'CERT-2025-003', 'issued');
+
+-- Insertion des relations de mentorat
+INSERT INTO mentorships (mentor_id, mentee_id, status, start_date, end_date, field, objectives) VALUES
+(1, 2, 'active', '2025-04-01', '2025-07-01', 'Développement Web', 'Maîtriser les frameworks modernes'),
+(3, 4, 'active', '2025-04-01', '2025-07-01', 'Leadership', 'Développer des compétences en management');
+
+-- Insertion des messages
+INSERT INTO messages (sender_id, receiver_id, content, status) VALUES
+(1, 2, 'Bonjour, comment se passe votre progression ?', 'delivered'),
+(2, 1, 'Très bien, merci ! J''ai des questions sur le dernier module.', 'read'),
+(3, 4, 'N''oubliez pas notre session de mentorat demain !', 'sent');
+
+-- Insertion des progrès
+INSERT INTO progress (user_id, course_id, status, completion_rate) VALUES
+(2, 1, 'in_progress', 65.50),
+(3, 2, 'completed', 100.00),
+(4, 3, 'in_progress', 45.75);
