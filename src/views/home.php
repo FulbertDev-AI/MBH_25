@@ -209,7 +209,7 @@
     </div>
 
     <div class="more-btn">
-        <a href="courses.html" class="inline-option-btn">Voir tous les cours</a>
+        <a href="courses.php" class="inline-option-btn">Voir tous les cours</a>
     </div>
 
 </section>
