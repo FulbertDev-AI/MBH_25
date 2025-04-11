@@ -176,9 +176,9 @@ CREATE TABLE progress
 
 -- Insertion de quelques utilisateurs supplémentaires
 INSERT INTO utilisateurs (nom, email, pass, photo) VALUES
-('Ditorga NANGA', 'ditorga.nanga@gmail.com', '$2y$10$toh9cT82ZiQUYUZDwKkqhe7ffIJmWMy2q55PCn/dr.sbRDfZnbe/.', 'default.png'),
-('Ali BARRY', 'ali.barry@gmail.com', '$2y$10$toh9cT82ZiQUYUZDwKkqhe7ffIJmWMy2q55PCn/dr.sbRDfZnbe/.', 'default.png'),
-('Darryl-win LOGOSSOU', 'darryl.logossou@gmail.com', '$2y$10$toh9cT82ZiQUYUZDwKkqhe7ffIJmWMy2q55PCn/dr.sbRDfZnbe/.', 'default.png');
+('Ditorga NANGA', 'ditorga.nanga@gmail.com', '$2y$10$toh9cT82ZiQUYUZDwKkqhe7ffIJmWMy2q55PCn/dr.sbRDfZnbe/.', 'default.jpg'),
+('Ali BARRY', 'ali.barry@gmail.com', '$2y$10$toh9cT82ZiQUYUZDwKkqhe7ffIJmWMy2q55PCn/dr.sbRDfZnbe/.', 'default.jpg'),
+('Darryl-win LOGOSSOU', 'darryl.logossou@gmail.com', '$2y$10$toh9cT82ZiQUYUZDwKkqhe7ffIJmWMy2q55PCn/dr.sbRDfZnbe/.', 'default.jpg');
 
 -- Insertion des profils
 INSERT INTO profiles (user_id, full_name, bio, interests, skills, education, experience, location) VALUES
