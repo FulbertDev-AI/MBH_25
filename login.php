@@ -2,45 +2,54 @@
 require 'config.php';
 session_start();
 
+$error = [];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $motdepasse = $_POST['pass'] ?? '';
+    $role = htmlspecialchars($_POST['role'] ?? ''); // Récupération du rôle
 
+    // Validation des champs
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error[] = 'Veuillez entrer une adresse email valide';
+        $error[] = 'Veuillez entrer une adresse email valide.';
     }
 
     if (empty($motdepasse)) {
-        $error[] = 'Le mot de passe est requis';
+        $error[] = 'Le mot de passe est requis.';
+    }
+
+    // Validation du rôle
+    $roles_valides = ['etudiant', 'professeur', 'mentor'];
+    if (empty($role) || !in_array($role, $roles_valides)) {
+        $error[] = 'Veuillez sélectionner un rôle valide.';
     }
 
     if (empty($error)) {
-
-
         try {
-            $stmt = $pdo->prepare("SELECT id, pass, nom, email FROM utilisateurs WHERE email = ?");
+            // Requête pour vérifier les identifiants dans la table correspondant au rôle
+            $stmt = $pdo->prepare("SELECT id, pass, nom, email FROM $role WHERE email = ?");
             $stmt->execute([$email]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user && password_verify($motdepasse, $user['pass'])) {
-
+                // Stocker les informations de l'utilisateur dans la session
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['nom'] = $user['nom'];
                 $_SESSION['email'] = $user['email'];
+                $_SESSION['role'] = $role;
 
-                header("Location: home.html");
+                // Redirection vers la page de profil
+                header("Location: profil.php");
                 exit();
             } else {
-
-                $error[] = 'Identifiants incorrects';
+                $error[] = 'Identifiants incorrects.';
             }
         } catch (PDOException $e) {
-            $error[] = "Erreur de connexion: " . $e->getMessage();
+            $error[] = "Erreur de connexion : " . $e->getMessage();
         }
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -68,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a href="home.html" class="logo">Nunya</a>
 
             <form action="search.html" method="post" class="search-form">
-                <input type="text" name="search_box" required placeholder="rechercher les cours..." maxlength="100">
+                <input type="text" name="search_box" required placeholder="Rechercher les cours..." maxlength="100">
                 <button type="submit" class="fas fa-search"></button>
             </form>
 
@@ -80,13 +89,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="profile">
-                <img src="images/pic-1.jpg" class="image" alt="">
+                <img src="pic-1.jpg" class="image" alt="">
                 <h3 class="name">Abalo Kossi</h3>
-                <p class="role">Etudiant</p>
-                <a href="profile.html" class="btn">Voir profile</a>
+                <p class="role">Étudiant</p>
+                <a href="profile.html" class="btn">Voir profil</a>
                 <div class="flex-btn">
-                    <a href="login.html" class="option-btn">Connexion</a>
-                    <a href="register.html" class="option-btn">Inscription</a>
+                    <a href="login.php" class="option-btn">Connexion</a>
+                    <a href="register.php" class="option-btn">Inscription</a>
                 </div>
             </div>
 
@@ -101,15 +110,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
         <div class="profile">
-            <img src="images/pic-1.jpg" class="image" alt="">
+            <img src="pic-1.jpg" class="image" alt="">
             <h3 class="name">Abalo Kossi</h3>
-            <p class="role">Etudiant</p>
-            <a href="profile.html" class="btn">Voir profile</a>
+            <p class="role">Étudiant</p>
+            <a href="profile.html" class="btn">Voir profil</a>
         </div>
 
         <nav class="navbar">
             <a href="home.html"><i class="fas fa-home"></i><span>Accueil</span></a>
-            <a href="about.html"><i class="fas fa-question"></i><span>A Propos</span></a>
+            <a href="about.html"><i class="fas fa-question"></i><span>À Propos</span></a>
             <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Cours</span></a>
             <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Enseignants</span></a>
             <a href="contact.html"><i class="fas fa-headset"></i><span>Contactez-nous</span></a>
@@ -119,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <section class="form-container">
 
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post">
             <h3>Connexion</h3>
             <?php
             if (!empty($error)) {
@@ -131,34 +140,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="email" name="email" placeholder="Entrez votre email" required maxlength="50" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" class="box">
             <p>Mot de passe <span>*</span></p>
             <input type="password" name="pass" placeholder="Entrez votre mot de passe" required maxlength="20" class="box">
+            <p>Rôle <span>*</span></p>
+            <select name="role" required class="box">
+                <option value="" disabled selected>Sélectionnez votre rôle</option>
+                <option value="etudiant">Étudiant</option>
+                <option value="professeur">Professeur</option>
+                <option value="mentor">Mentor</option>
+            </select>
             <input type="submit" value="Se connecter" name="submit" class="btn">
         </form>
 
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <footer class="footer">
-
-        &copy; copyright @ 2025 by <span>Code Reapers | MBH 25</span> | Tous droits reservés
-
+        &copy; copyright @ 2025 by <span>Code Reapers | MBH 25</span> | Tous droits réservés
     </footer>
 
     <!-- custom js file link  -->
-    <script src="js/script.js"></script>
-
+    <script src="script.js"></script>
 
 </body>
 
