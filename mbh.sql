@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 10 avr. 2025 à 23:27
+-- Généré le : sam. 12 avr. 2025 à 12:35
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -24,33 +24,81 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateurs`
+-- Structure de la table `etudiant`
 --
 
-CREATE TABLE `utilisateurs` (
+CREATE TABLE `etudiant` (
   `id` int(11) NOT NULL,
-  `nom` varchar(100) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `pass` varchar(255) DEFAULT NULL,
-  `photo` varchar(255) DEFAULT NULL,
-  `date_inscription` timestamp NOT NULL DEFAULT current_timestamp()
+  `nom` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `utilisateurs`
+-- Déchargement des données de la table `etudiant`
 --
 
-INSERT INTO `utilisateurs` (`id`, `nom`, `email`, `pass`, `photo`, `date_inscription`) VALUES
-(1, 'Toï Ewaza TCHAMOUZA', 'tchamouzabeni6@gmail.com', '$2y$10$toh9cT82ZiQUYUZDwKkqhe7ffIJmWMy2q55PCn/dr.sbRDfZnbe/.', '67f8517e45d0a_Capture d\'écran 2025-04-03 095355.png', '2025-04-10 23:17:18');
+INSERT INTO `etudiant` (`id`, `nom`, `email`, `pass`, `photo`) VALUES
+(1, 'Toï Ewaza TCHAMOUZA', 'tchamouzabeni6@gmail.com', '$2y$10$JRUuNbcBIzYaO6ZPR8dbPuUeXZbheeukOHTVNmau1xZ43PVRe6Rc2', '67fa5c31727fe_thumb-6.png');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `mentor`
+--
+
+CREATE TABLE `mentor` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `professeur`
+--
+
+CREATE TABLE `professeur` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `professeur`
+--
+
+INSERT INTO `professeur` (`id`, `nom`, `email`, `pass`, `photo`) VALUES
+(1, 'Toï Ewaza TCHAMOUZA', 'tchamouzabeni6@gmail.com', '$2y$10$68u7iKhJTo6OzNqcKYnfV.a.hInJaexG5yygW8JX3Y2F1V42KWApK', '67fa5b7a9f0ba_thumb-7.png');
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `utilisateurs`
+-- Index pour la table `etudiant`
 --
-ALTER TABLE `utilisateurs`
+ALTER TABLE `etudiant`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Index pour la table `mentor`
+--
+ALTER TABLE `mentor`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Index pour la table `professeur`
+--
+ALTER TABLE `professeur`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
@@ -59,9 +107,21 @@ ALTER TABLE `utilisateurs`
 --
 
 --
--- AUTO_INCREMENT pour la table `utilisateurs`
+-- AUTO_INCREMENT pour la table `etudiant`
 --
-ALTER TABLE `utilisateurs`
+ALTER TABLE `etudiant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `mentor`
+--
+ALTER TABLE `mentor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `professeur`
+--
+ALTER TABLE `professeur`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
